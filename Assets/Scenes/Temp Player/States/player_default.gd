@@ -38,6 +38,10 @@ func update_sprite(movement: Vector2) -> void:
 		sprite.modulate.a = 0.8
 	else:
 		sprite.modulate.a = 1.0
+		
+func move(speed: float, axis: Vector2, delta: float) -> void:
+	player.move_and_collide(Vector2(speed * axis.x * delta, 0.0))
+	player.move_and_collide(Vector2(0.0, speed * axis.y * delta))
 
 func update(_delta: float) -> void:
 	var movement_axis := get_movement_axis()
@@ -48,7 +52,7 @@ func physics_update(delta: float):
 	
 	if Input.is_action_pressed("shift"):
 		focused = true
-		player.move_and_collide(movement_axis * FOCUS_SPEED * delta)
+		move(FOCUS_SPEED, movement_axis, delta)
 	else:
 		focused = false
-		player.move_and_collide(movement_axis * RUN_SPEED * delta)
+		move(RUN_SPEED, movement_axis, delta)

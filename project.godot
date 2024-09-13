@@ -15,6 +15,10 @@ run/main_scene="res://Assets/Scenes/Main/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://Assets/Misc/icon.svg"
 
+[autoload]
+
+BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -25,7 +29,7 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [file_customization]
 

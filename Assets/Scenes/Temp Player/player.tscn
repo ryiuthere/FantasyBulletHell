@@ -160,7 +160,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfhwv"]
-size = Vector2(46, 26)
+size = Vector2(44, 24)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -171,8 +171,8 @@ scale = Vector2(3.2, 3.2)
 sprite_frames = SubResource("SpriteFrames_exna2")
 animation = &"move_down"
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_vfhwv")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -183,7 +183,7 @@ initial_state = NodePath("PlayerDefault")
 
 [node name="PlayerDefault" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "sprite")]
 script = ExtResource("1_87v0g")
-RUN_SPEED = 500.0
-FOCUS_SPEED = 300.0
+RUN_SPEED = 400.0
+FOCUS_SPEED = 250.0
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
