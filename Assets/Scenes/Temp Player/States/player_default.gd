@@ -5,6 +5,7 @@ class_name PlayerDefault
 @export var FOCUS_SPEED: float
 @export var player: CharacterBody2D
 @export var sprite: AnimatedSprite2D
+@export var hurtbox_sprite: Sprite2D
 
 var facing := "down"
 var focused := false #TODO: Can add focus as its own state later if it gets special properties
@@ -35,9 +36,15 @@ func update_sprite(movement: Vector2) -> void:
 	sprite.play()
 	
 	if focused:
-		sprite.modulate.a = 0.8
+		sprite.modulate.a = 0.65
+		hurtbox_sprite.visible = true
 	else:
 		sprite.modulate.a = 1.0
+		hurtbox_sprite.visible = false
+		
+func move(speed: float, axis: Vector2, delta: float) -> void:
+	player.move_and_collide(Vector2(speed * axis.x * delta, 0.0))
+	player.move_and_collide(Vector2(0.0, speed * axis.y * delta))
 
 func update(_delta: float) -> void:
 	var movement_axis := get_movement_axis()
@@ -48,7 +55,7 @@ func physics_update(delta: float):
 	
 	if Input.is_action_pressed("shift"):
 		focused = true
-		player.move_and_collide(movement_axis * FOCUS_SPEED * delta)
+		move(FOCUS_SPEED, movement_axis, delta)
 	else:
 		focused = false
-		player.move_and_collide(movement_axis * RUN_SPEED * delta)
+		move(RUN_SPEED, movement_axis, delta)

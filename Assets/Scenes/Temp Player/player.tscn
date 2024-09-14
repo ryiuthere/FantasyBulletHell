@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bn0bed0dtylob"]
+[gd_scene load_steps=27 format=3 uid="uid://bn0bed0dtylob"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/Temp Player/States/player_default.gd" id="1_87v0g"]
 [ext_resource type="Texture2D" uid="uid://dnv1r1e4xaebe" path="res://Assets/Scenes/Temp Player/TempPlayerSpritesheet.png" id="1_bc84g"]
+[ext_resource type="Script" path="res://Assets/Scenes/Temp Player/player.gd" id="1_t0u7t"]
 [ext_resource type="Script" path="res://Assets/Singletons/state_machine.gd" id="2_chfa5"]
+[ext_resource type="Texture2D" uid="uid://n8o055odryil" path="res://Assets/Misc/Circle.png" id="2_tevv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjg8l"]
 atlas = ExtResource("1_bc84g")
@@ -160,10 +162,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfhwv"]
-size = Vector2(46, 26)
+size = Vector2(44, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0au3r"]
+radius = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bii6n"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_masxe"]
+font_size = 64
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
+script = ExtResource("1_t0u7t")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -171,9 +185,27 @@ scale = Vector2(3.2, 3.2)
 sprite_frames = SubResource("SpriteFrames_exna2")
 animation = &"move_down"
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_vfhwv")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_0au3r")
+
+[node name="HurtboxSprite" type="Sprite2D" parent="Hurtbox"]
+z_index = 3
+texture_filter = 1
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_tevv3")
+
+[node name="Outline" type="Sprite2D" parent="Hurtbox/HurtboxSprite"]
+self_modulate = Color(0.95, 0.1995, 0.57475, 1)
+show_behind_parent = true
+scale = Vector2(1.41, 1.41)
+texture = ExtResource("2_tevv3")
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -181,9 +213,28 @@ shape = SubResource("RectangleShape2D_vfhwv")
 script = ExtResource("2_chfa5")
 initial_state = NodePath("PlayerDefault")
 
-[node name="PlayerDefault" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "sprite")]
+[node name="PlayerDefault" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "sprite", "hurtbox_sprite")]
 script = ExtResource("1_87v0g")
-RUN_SPEED = 500.0
-FOCUS_SPEED = 300.0
+RUN_SPEED = 400.0
+FOCUS_SPEED = 250.0
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
+hurtbox_sprite = NodePath("../../Hurtbox/HurtboxSprite")
+
+[node name="DebugFPS" type="Label" parent="."]
+z_index = 4
+offset_left = -957.0
+offset_top = -548.0
+offset_right = -831.0
+offset_bottom = -460.0
+scale = Vector2(0.560005, 0.560005)
+label_settings = SubResource("LabelSettings_bii6n")
+
+[node name="DebugBulletCount" type="Label" parent="."]
+z_index = 4
+offset_left = -957.0
+offset_top = -516.0
+offset_right = -879.0
+offset_bottom = -428.0
+scale = Vector2(0.56, 0.56)
+label_settings = SubResource("LabelSettings_masxe")

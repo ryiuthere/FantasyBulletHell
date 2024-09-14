@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm07xy6w38vbh"]
+[gd_scene load_steps=5 format=3 uid="uid://cm07xy6w38vbh"]
 
 [ext_resource type="PackedScene" uid="uid://bn0bed0dtylob" path="res://Assets/Scenes/Temp Player/player.tscn" id="1_f1fqg"]
-[ext_resource type="Texture2D" uid="uid://cc28cdh0muvx" path="res://Assets/Misc/icon.svg" id="2_sef0b"]
+[ext_resource type="PackedScene" uid="uid://gapsmra1jyuu" path="res://Assets/Scenes/Stages/Temp Stage/temp_stage.tscn" id="2_3jpac"]
+[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet_spawner.gd" id="3_s01u2"]
+[ext_resource type="PackedScene" uid="uid://clatym31i8r3j" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet.tscn" id="4_kjggr"]
 
 [node name="Main" type="Node2D"]
 
-[node name="gooooooooooooooooodot" type="Sprite2D" parent="."]
-position = Vector2(965, 179)
-scale = Vector2(18.1094, 0.460938)
-texture = ExtResource("2_sef0b")
+[node name="Temp Stage" parent="." instance=ExtResource("2_3jpac")]
 
 [node name="Player" parent="." instance=ExtResource("1_f1fqg")]
+position = Vector2(320, 297)
+
+[node name="BulletSpawner" type="Node2D" parent="."]
+script = ExtResource("3_s01u2")
+bullet_scene = ExtResource("4_kjggr")
