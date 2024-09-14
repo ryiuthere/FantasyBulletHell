@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://clatym31i8r3j"]
+
+[ext_resource type="Texture2D" uid="uid://n8o055odryil" path="res://Assets/Misc/Circle.png" id="1_w6jus"]
+[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet.gd" id="1_w15tv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxijy"]
+
+[node name="Bullet" type="Area2D"]
+top_level = true
+z_index = 1
+texture_filter = 2
+scale = Vector2(1.64, 1.64)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_w15tv")
+
+[node name="OuterSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.616667, 1, 0.486275)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("1_w6jus")
+
+[node name="InnerSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.92, 0.965333, 1, 1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_w6jus")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mxijy")
+debug_color = Color(0.7, 0, 0.105, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

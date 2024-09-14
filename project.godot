@@ -13,11 +13,13 @@ config_version=5
 config/name="FantasyBulletHell"
 run/main_scene="res://Assets/Scenes/Main/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+run/max_fps=61
 config/icon="res://Assets/Misc/icon.svg"
 
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+Globals="*res://Assets/Singletons/Autoload/Globals.gd"
 
 [display]
 
@@ -34,6 +36,7 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Assets/Scenes/Bullets and Spawners/": "yellow",
 "res://Assets/Scenes/Main/": "red",
 "res://Assets/Scenes/Stages/": "purple",
 "res://Assets/Scenes/Temp Player/": "blue",
@@ -77,6 +80,12 @@ space={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Map"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Bullets"
+
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.0837, 0.086325, 0.09, 1)
+environment/defaults/default_clear_color=Color(0.0984, 0.10668, 0.12, 1)
