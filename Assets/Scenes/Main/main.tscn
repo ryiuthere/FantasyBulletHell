@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm07xy6w38vbh"]
+[gd_scene load_steps=6 format=3 uid="uid://cm07xy6w38vbh"]
 
 [ext_resource type="PackedScene" uid="uid://bn0bed0dtylob" path="res://Assets/Scenes/Temp Player/player.tscn" id="1_f1fqg"]
 [ext_resource type="PackedScene" uid="uid://gapsmra1jyuu" path="res://Assets/Scenes/Stages/Temp Stage/temp_stage.tscn" id="2_3jpac"]
-[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet_spawner.gd" id="3_s01u2"]
-[ext_resource type="PackedScene" uid="uid://clatym31i8r3j" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet.tscn" id="4_kjggr"]
+[ext_resource type="PackedScene" uid="uid://dghhtbt3voh0s" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/test_spawner.tscn" id="3_sk1fm"]
+[ext_resource type="PackedScene" uid="uid://bel1prjvvxyg0" path="res://Assets/Scenes/Bullets and Spawners/RB Bullets/rb_linear_bullet.tscn" id="4_0u2us"]
+[ext_resource type="PackedScene" uid="uid://bv8fqtijv1f3l" path="res://Assets/Scenes/Bullets and Spawners/RB Bullets/rb_angle_bullet.tscn" id="4_jtjk4"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Temp Stage" parent="." instance=ExtResource("2_3jpac")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_f1fqg")]
-position = Vector2(320, 297)
+position = Vector2(6, 480)
 
-[node name="BulletSpawner" type="Node2D" parent="."]
-script = ExtResource("3_s01u2")
-bullet_scene = ExtResource("4_kjggr")
+[node name="TestSpawner" parent="." instance=ExtResource("3_sk1fm")]
+secondary_bullet_scene = ExtResource("4_0u2us")
+spawner_angular_velocity = 2.5
+cooldown = 0.3
+bullets_per_shot = 18
+temp_bullet_initial_speed = 250.0
+bullet_scene = ExtResource("4_jtjk4")

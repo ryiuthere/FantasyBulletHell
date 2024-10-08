@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://rkrvovjec6w1"]
-
-[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet_spawner.gd" id="1_up6om"]
-[ext_resource type="PackedScene" uid="uid://clatym31i8r3j" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/bullet.tscn" id="2_4q4hp"]
-
-[node name="BulletSpawner" type="Node2D"]
-script = ExtResource("1_up6om")
-bullet_scene = ExtResource("2_4q4hp")
