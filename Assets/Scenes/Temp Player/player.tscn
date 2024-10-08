@@ -165,7 +165,7 @@ animations = [{
 size = Vector2(44, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0au3r"]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_bii6n"]
 font_size = 64
@@ -186,7 +186,6 @@ sprite_frames = SubResource("SpriteFrames_exna2")
 animation = &"move_down"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_vfhwv")
 
@@ -208,6 +207,8 @@ scale = Vector2(1.41, 1.41)
 texture = ExtResource("2_tevv3")
 
 [node name="Camera" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_speed = 0.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_chfa5")

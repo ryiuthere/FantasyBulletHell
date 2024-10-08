@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 func damage() -> void:
-	print("you suck")
+	$Sprite.visible = false
+	$Hurtbox.visible = false
 
 
 func _process(_delta: float) -> void:

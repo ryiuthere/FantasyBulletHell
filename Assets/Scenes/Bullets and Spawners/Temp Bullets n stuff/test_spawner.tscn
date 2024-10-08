@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dghhtbt3voh0s"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/Temp Bullets n stuff/test_spawner.gd" id="1_tla3g"]
+
+[node name="TestSpawner" type="Node2D"]
+script = ExtResource("1_tla3g")
+cooldown = 0.5
+temp_bullet_initial_speed = 150.0

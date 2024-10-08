@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bel1prjvvxyg0"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/RB Bullets/rb_linear_bullet.gd" id="1_wqsmr"]
+[ext_resource type="Texture2D" uid="uid://n8o055odryil" path="res://Assets/Misc/Circle.png" id="2_pkkn1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1keb"]
+radius = 7.31707
+
+[node name="RBLinearBullet" type="Area2D"]
+top_level = true
+scale = Vector2(1.64, 1.64)
+monitorable = false
+script = ExtResource("1_wqsmr")
+
+[node name="OuterSprite" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0.266666, 0.486275)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_pkkn1")
+
+[node name="InnerSprite" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.92, 0.938667, 1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_pkkn1")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c1keb")
+debug_color = Color(0.7, 0, 0.105, 0.419608)

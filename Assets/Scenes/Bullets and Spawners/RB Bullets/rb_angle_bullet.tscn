@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8fqtijv1f3l"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Bullets and Spawners/RB Bullets/rb_angle_bullet.gd" id="1_x8t04"]
+[ext_resource type="Texture2D" uid="uid://n8o055odryil" path="res://Assets/Misc/Circle.png" id="2_2g7ee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsnm0"]
+radius = 7.31707
+
+[node name="RBAngleBullet" type="Area2D"]
+top_level = true
+scale = Vector2(1.64, 1.64)
+monitorable = false
+script = ExtResource("1_x8t04")
+
+[node name="OuterSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.616667, 1, 0.486275)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_2g7ee")
+
+[node name="InnerSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.92, 0.965333, 1, 1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_2g7ee")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nsnm0")
+debug_color = Color(0.7, 0, 0.105, 0.419608)
